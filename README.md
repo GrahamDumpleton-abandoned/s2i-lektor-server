@@ -49,7 +49,12 @@ Parameters:
     Value:		<none>
     
     Name:		SOURCE_DIRECTORY
-    Description:	Sub-directory for source files.
+    Description:	Sub-directory of repository for source files.
+    Required:		false
+    Value:		<none>
+    
+    Name:		DOCUMENT_ROOT
+    Description:	Sub-directory of source directory for documents.
     Required:		false
     Value:		<none>
     

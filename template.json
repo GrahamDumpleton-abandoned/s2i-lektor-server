@@ -71,7 +71,13 @@
                         "from": {
                             "kind": "ImageStreamTag",
                             "name": "${APPLICATION_NAME}-s2i:2.3"
-                        }
+                        },
+                        "env": [
+                            {
+                                "name": "DOCUMENT_ROOT",
+                                "value": "${DOCUMENT_ROOT}"
+                            }
+                        ]
                     }
                 },
                 "output": {
@@ -213,7 +219,13 @@
         },
         {
             "name": "SOURCE_DIRECTORY",
-            "description": "Sub-directory for source files.",
+            "description": "Sub-directory of repository for source files.",
+            "value": "",
+            "required": false
+        },
+        {
+            "name": "DOCUMENT_ROOT",
+            "description": "Sub-directory of source directory for documents.",
             "value": "",
             "required": false
         },
