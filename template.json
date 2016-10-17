@@ -4,7 +4,7 @@
     "metadata": {
         "name": "lektor-server",
         "annotations": {
-            "description": "GitBook Server",
+            "description": "Lektor Server",
             "tags": "instant-app,lektor"
         }
     },
