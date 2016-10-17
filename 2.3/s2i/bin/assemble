@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -eo pipefail
+
+${WARPDRIVE_S2I_ROOT}/bin/assemble
+
+echo " -----> Running Lektor site builder."
+
+lektor build --output-path ${WARPDRIVE_APP_ROOT}/data
