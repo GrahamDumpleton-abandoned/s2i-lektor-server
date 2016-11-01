@@ -36,12 +36,6 @@ Parameters:
     Description:	The name of the application.
     Required:		true
     Value:		lektor-server
-    
-    Name:		INSTANCE_ID
-    Description:	ID to bind application components.
-    Required:		true
-    Generated:		expression
-    From:		[a-z0-9]{5}
 
     Name:		SOURCE_REPOSITORY
     Description:	Git repository for source.
@@ -71,25 +65,7 @@ Objects:
     Route		${APPLICATION_NAME}
 ```
 
-The ``APPLICATION_NAME`` and ``SOURCE_REPOSITORY`` should be specified. Override the ``BUILD_MEMORY_LIMIT`` and set it to a higher memory value if the ``lektor`` application keeps getting killed when processing the site data.
-
-The template applies the label ``appid`` to all resource objects created. The value of the label is constructed using ``${APPLICATION_NAME}-${INSTANCE_ID}``. There is no need to supply ``INSTANCE_ID`` as it will be automatically populated.
-
-To delete all the resource objects created using the template, determine the value of the ``appid`` label and then use ``oc delete all`` to delete them. For example:
-
-```
-$ oc delete all --selector appid=lektor-server-fwo66
-buildconfig "lektor-server" deleted
-imagestream "lektor-server" deleted
-imagestream "lektor-server-s2i" deleted
-deploymentconfig "lektor-server" deleted
-route "lektor-server" deleted
-service "lektor-server" deleted
-```
-
-If ``oc new-app`` was used directly against the S2I builder image, you should instead use the ``app`` label and the value assigned to it by ``oc new-app`` when using ``oc delete all`` to delete all the resource objects created.
-
-It is possible to use the ``app`` label if deleting all resource objects after having used the template as well, but you would need to have overridden the ``app`` label to be a unique value when filling out the template from the web console else it isn't unique to the application.
+The ``APPLICATION_NAME`` and ``SOURCE_REPOSITORY`` must be specified. Override the ``BUILD_MEMORY_LIMIT`` and set it to a higher memory value if the ``lektor`` application keeps getting killed when processing the site data.
 
 ## Standalone Docker Images
 
